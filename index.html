@@ -39,6 +39,10 @@
         text-decoration: underline;
       }
 
+      a.link {
+        text-decoration: underline;
+      }
+
       a.file {
         background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABnRSTlMAAAAAAABupgeRAAABHUlEQVR42o2RMW7DIBiF3498iHRJD5JKHurL+CRVBp+i2T16tTynF2gO0KSb5ZrBBl4HHDBuK/WXACH4eO9/CAAAbdvijzLGNE1TVZXfZuHg6XCAQESAZXbOKaXO57eiKG6ft9PrKQIkCQqFoIiQFBGlFIB5nvM8t9aOX2Nd18oDzjnPgCDpn/BH4zh2XZdlWVmWiUK4IgCBoFMUz9eP6zRN75cLgEQhcmTQIbl72O0f9865qLAAsURAAgKBJKEtgLXWvyjLuFsThCSstb8rBCaAQhDYWgIZ7myM+TUBjDHrHlZcbMYYk34cN0YSLcgS+wL0fe9TXDMbY33fR2AYBvyQ8L0Gk8MwREBrTfKe4TpTzwhArXWi8HI84h/1DfwI5mhxJamFAAAAAElFTkSuQmCC ")
           left top no-repeat;
@@ -122,10 +126,10 @@
   <script>
     const tbody = document.getElementById('tbody')
 
-    function appendTr({url="#", file = true, name=".", date='10/29/1969, 00:00:00', size = '', target="_blank"}) {
+    function appendTr({url="#", icon = 'file', name=".", date='10/29/1969, 00:00:00', size = '', target="_blank"}) {
       const $td = `
           <td>
-            <a ${target ? `target="${target}"` : ''}  class="icon ${file ? 'file' : 'dir'}" href="${url}">${name}/</a>
+            <a ${target ? `target="${target}"` : ''}  class="icon ${icon}" href="${url}">${name}</a>
           </td>
           <td class="detailsColumn">${size}</td>
           <td class="detailsColumn">
@@ -141,11 +145,11 @@
  
     const arr = [
     //  {url: './projects.html', file: false, name: 'projects', date: '10/06/2010, 00:00:01', size: '128 kB', target: false},
-      {url: './memes.html', file: false, name: 'memes', date: '10/06/2010, 00:00:01', size: '128 kB', target: false},
-      {url: 'https://instagram.com/hach.dev', file: true, name: 'instagram', date: '10/06/2010, 00:00:01', size: '8 B', target: true},
-      {url: 'https://github.com/hach-dev', file: true, name: 'git', date: '10/06/2010, 00:00:01', size: '42 kB', target: true},
-      {url: './about_us.txt', file: true, name: 'about_us.txt', date: '15/06/2021, 00:48:11', size: '15 B', target: false},
-      {url: './htpasswd', file: true, name: '.htpasswd', date: '15/06/2021, 00:48:11', size: '15 B', target: false}
+      {url: './memes.html', icon: 'dir', name: 'memes/', date: '10/06/2010, 00:00:01', size: '128 kB', target: false},
+      {url: 'https://instagram.com/hach.dev', icon: 'file link', name: 'instagram', date: '10/06/2010, 00:00:01', size: '8 B', target: true},
+      {url: 'https://github.com/hach-dev', icon: 'file link', name: 'git', date: '10/06/2010, 00:00:01', size: '42 kB', target: true},
+      {url: './about_us.txt', icon: 'file', name: 'about_us.txt', date: '15/06/2021, 00:48:11', size: '15 B', target: false},
+      {url: './htpasswd', icon: 'file', name: '.htpasswd', date: '15/06/2021, 00:48:11', size: '20 B', target: false}
     ]
 
     arr.forEach(function(data) {
